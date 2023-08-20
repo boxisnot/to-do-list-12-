@@ -1,0 +1,42 @@
+## To Do List
+import time
+import tkinter
+from tkinter import *
+
+
+def clr():
+    txts1.delete(1.0,2.0)
+def data_enter():
+     msg=txts.get(1.0,END)
+     txts1.insert(END,msg.upper())
+     txts.delete(1.0,END)
+
+root = Tk()
+root.title('Ajay kumar')
+root.iconbitmap('Ajay kumar.ico')
+root.config(bg='light blue')
+root.geometry('400x400')
+
+btn=Button(root,text='Add',font=("Time New Roman",10),cursor="plus",command=data_enter)
+btn.place(x=10,y=20)
+
+btn=Button(root,text='Delete',font=("Time New Roman",10),cursor="plus",command=clr)
+btn.place(x=2,y=60)
+
+
+lbl=Label(root,text='add your new text data here',font=("TimeTime New Roman",10),bg='light blue')
+lbl.place(x=100,y=10,width=200)
+
+frame=Frame(root).pack(side=BOTTOM)
+
+scrl=Scrollbar(frame)
+scrl.place(x=371,y=60,width=20,height=330)
+
+txts=Text(root,font=("Time New Roman",10),wrap="word",background='pink',foreground='blue')
+txts.place(x=50,y=30,width=320,height=20)
+
+txts1=Text(root,font=("Time New Roman",10),wrap="word",yscrollcommand=scrl.set)
+txts1.place(x=50,y=60,width=320,height=330)
+scrl.config(command=txts1.yview)
+
+root.mainloop()
